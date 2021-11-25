@@ -1,0 +1,45 @@
+<html>
+    <title>GreenMART</title>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="/css/products.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    </head>
+    <body>
+        <div><%- include('../includes/navigation.ejs')%></div>
+        
+        <form method="POST" action="/postsearch/<%= SPIN %>" class="form-inline ">
+            <input type="hidden" value="<%=category%>" name="category">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search Product" name="product">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="container">
+        <% for (let index = 0; index < (items.length/4); index++) {%>
+                <div class="row">
+                <% for (let i = index; i < 4; i++) {%>
+                        <div class="card col-md-2 col-sm-5" >
+                        <img class="card-img-top" src="/images/<%= items[i].image %>.png" alt="Card image cap" width=100 height=150>
+                        <div class="card-body">
+                            <p class="card-title"><%= items[i].name %></p>
+                            <p class="card-text"><%= items[i].price %> <i class="fas fa-rupee-sign"></i></p>
+                            <form method="POST" action="/postcart" id="atc">
+                                <input type="hidden" value="<%= items[i].name %>" name="Name">
+                                <input type="hidden" value="<%= items[i].price %>" name="Price">
+                                <button type="submit" class="btn btn-warning">Add to Cart</button>
+                            </form>
+                        </div>
+                        </div>
+                        
+                        
+                <% index=i;} %>
+                </div>
+        <% } %>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
