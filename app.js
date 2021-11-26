@@ -40,10 +40,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname + '/public'));
 app.use(shopRoutes);
 app.use(authRoutes);
+const port = process.env.PORT || 5000;
 mongoose.connect("mongodb+srv://darshan:msdhoni@cluster0.oantu.mongodb.net/mySecondDatabase?retryWrites=true&w=majority")
 .then(result=>{
     console.log("groce started");
-    app.listen(4200,function(){
+    app.listen(port,function(){
         console.log("Hello");
     });
 })
