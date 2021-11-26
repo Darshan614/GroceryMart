@@ -17,20 +17,20 @@ exports.getstorelist = (req, res, next) => {
   let lg = req.user.address.longitude;
   console.log(lt, lg);
 //   const store = new Store({
-//     place: "Sheetla Mata Mandir, Gurugram",
+//     place: "Near Advance Hospital, Sanganer",
 //     location: {
 //       type: "Point",
-//       coordinates: [28.4231878, 76.8496613]
+//       coordinates: [26.8077474, 75.7645542]
 //     },
 //     products: {
 //       dairy: [{ name: "Milk", price: 90 }],
 //       vegetables: [{ name: "Tomato", price: 100 }]
 //     },
-//     storePIN: "G001",
-//     rating: 3
+//     storePIN: "A008",
+//     rating: 4
 //   });
 //   const items = new Item({
-//     SPIN: "G001",
+//     SPIN: "A008",
 //     Snacks: [
 //       { name: "Bhujia", price: 90, image: "bhujia" },
 //       { name: "Bingo Tedhe Medhe", price: 20, image: "bingo" },
@@ -78,7 +78,7 @@ exports.getstorelist = (req, res, next) => {
 //       console.log(result);
 //       return res.render('shop/shop');
 //   });
-  Store.find({location:{$near:{$geometry:{type:"Point",coordinates:[lt,lg]},$maxDistance:30000}}})
+  Store.find({location:{$near:{$geometry:{type:"Point",coordinates:[lt,lg]},$maxDistance:3000}}})
   .then(result=>{
       console.log(result);
 
