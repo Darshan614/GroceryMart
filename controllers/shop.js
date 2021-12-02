@@ -78,7 +78,7 @@ exports.getstorelist = (req, res, next) => {
 //       console.log(result);
 //       return res.render('shop/shop');
 //   });
-  Store.find({location:{$near:{$geometry:{type:"Point",coordinates:[lt,lg]},$maxDistance:13000}}})
+  Store.find({location:{$near:{$geometry:{type:"Point",coordinates:[lt,lg]},$maxDistance:100000}}})
   .then(result=>{
       console.log(result);
 
